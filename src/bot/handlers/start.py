@@ -2,7 +2,6 @@ from aiogram import Router, types
 from aiogram.filters import CommandStart
 
 from src.bot.filters.register_filter import RegisterFilter, AdminFilter, ModeratorFilter
-from src.db.models import User
 
 router = Router()
 

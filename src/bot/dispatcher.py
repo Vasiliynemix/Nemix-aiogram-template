@@ -29,7 +29,7 @@ def get_dispatcher(
         dp.include_router(router)
 
     # Register middlewares
-    dp.message.middleware(DatabaseMiddleware())
-    dp.callback_query.middleware(DatabaseMiddleware())
+    dp.message.outer_middleware(DatabaseMiddleware())
+    dp.callback_query.outer_middleware(DatabaseMiddleware())
 
     return dp
