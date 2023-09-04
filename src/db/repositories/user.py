@@ -1,4 +1,3 @@
-from aiogram.types import Message
 from sqlalchemy import select, or_
 from sqlalchemy.ext.asyncio import AsyncSession
 

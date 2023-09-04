@@ -26,6 +26,7 @@ async def start_bot():
     #         port=conf.redis.port,
     #     )
     # )
+
     dp = get_dispatcher()
 
     await dp.start_polling(
