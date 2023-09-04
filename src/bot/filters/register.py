@@ -22,17 +22,3 @@ class RegisterFilter(BaseFilter):
         )
         await db.session.commit()
         return True
-
-
-class AdminFilter(BaseFilter):
-    async def __call__(self, message: Message, db: Database):
-        user = await db.user.get_by_user_id(user_id=message.from_user.id)
-        if user.role == Role.ADMINISTRATOR:
-            return True
-
-
-class ModeratorFilter(BaseFilter):
-    async def __call__(self, message: Message, db: Database):
-        user = await db.user.get_by_user_id(user_id=message.from_user.id)
-        if user.role == Role.MODERATOR or user.role == Role.ADMINISTRATOR:
-            return True

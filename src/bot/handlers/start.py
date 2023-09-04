@@ -1,7 +1,9 @@
 from aiogram import Router, types
 from aiogram.filters import CommandStart
 
-from src.bot.filters.register_filter import RegisterFilter, AdminFilter, ModeratorFilter
+from src.bot.filters.admin import AdminFilter
+from src.bot.filters.moderator import ModeratorFilter
+from src.bot.filters.register import RegisterFilter
 
 router = Router()
 

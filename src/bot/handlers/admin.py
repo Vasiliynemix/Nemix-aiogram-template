@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
-from src.bot.filters.register_filter import AdminFilter
+from src.bot.filters.admin import AdminFilter
 from src.db.database import Database
 
 router = Router()
