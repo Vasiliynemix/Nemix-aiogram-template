@@ -6,7 +6,7 @@ from aiogram.fsm.strategy import FSMStrategy
 from redis.asyncio.client import Redis
 
 from src.bot.handlers import routers
-from src.bot.middlewares.middleware_md import DatabaseMiddleware
+from src.bot.middlewares.middleware_db import DatabaseMiddleware
 from src.configuration import conf
 
 
