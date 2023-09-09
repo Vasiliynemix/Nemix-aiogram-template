@@ -32,12 +32,10 @@ async def start_bot():
     await dp.start_polling(
         bot,
         allowed_updates=dp.resolve_used_update_types(),
-        **TransferData(
-            engine=create_async_engine(url=conf.db.build_connection_str())
-        )
+        **TransferData(engine=create_async_engine(url=conf.db.build_connection_str()))
     )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     logging.basicConfig(level=conf.logging_level)
     asyncio.run(start_bot())

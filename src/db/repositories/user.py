@@ -12,14 +12,14 @@ class UserRepo(Repository[User]):
         super().__init__(type_model=User, session=session)
 
     async def new(
-            self,
-            user_id: int,
-            user_name: str | None = None,
-            first_name: str | None = None,
-            second_name: str | None = None,
-            language_code: str | None = None,
-            is_premium: bool | None = False,
-            role: Role | None = Role.USER,
+        self,
+        user_id: int,
+        user_name: str | None = None,
+        first_name: str | None = None,
+        second_name: str | None = None,
+        language_code: str | None = None,
+        is_premium: bool | None = False,
+        role: Role | None = Role.USER,
     ) -> None:
         await self.session.merge(
             User(
@@ -39,10 +39,7 @@ class UserRepo(Repository[User]):
     async def get_by_role(self):
         moderators = await self.session.scalars(
             select(User).filter(
-                or_(
-                    User.role == Role.ADMINISTRATOR,
-                    User.role == Role.MODERATOR
-                )
+                or_(User.role == Role.ADMINISTRATOR, User.role == Role.MODERATOR)
             )
         )
         return moderators.all()

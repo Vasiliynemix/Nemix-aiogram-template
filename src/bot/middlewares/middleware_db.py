@@ -16,6 +16,6 @@ class DatabaseMiddleware(BaseMiddleware):
         event: Message | CallbackQuery,
         data: TransferData,
     ) -> Any:
-        async with AsyncSession(bind=data['engine']) as session:
-            data['db'] = Database(session)
+        async with AsyncSession(bind=data["engine"]) as session:
+            data["db"] = Database(session)
             return await handler(event, data)

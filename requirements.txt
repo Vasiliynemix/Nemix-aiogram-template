@@ -1,7 +1,0 @@
-aiogram
-alembic
-asyncpg
-python-dotenv
-redis
-SQLAlchemy
-pytest

@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.db.models import Base
 
-AbstractModel = TypeVar('AbstractModel')
+AbstractModel = TypeVar("AbstractModel")
 
 
 class Repository(Generic[AbstractModel]):
@@ -18,14 +18,14 @@ class Repository(Generic[AbstractModel]):
         self.session = session
 
     async def get(self, ident: int | str) -> AbstractModel:
-        """ Get ONE model from database this Primary Key.
+        """Get ONE model from database this Primary Key.
         :param ident: Primary Key which need to find entry in database
         :return:
         """
         return await self.session.get(entity=self.type_model, ident=ident)
 
     async def get_by_where(self, condition) -> AbstractModel | None:
-        """ Get ONE model from database this condition.
+        """Get ONE model from database this condition.
         :param condition: example (User.user_id == <user_id>)
         :return:
         """
@@ -33,8 +33,10 @@ class Repository(Generic[AbstractModel]):
 
         return (await self.session.execute(statement)).one_or_none()
 
-    async def get_many(self, condition, limit: int = 100, order_by=None) -> Sequence[Base]:
-        """ get MANY models from database this condition.
+    async def get_many(
+        self, condition, limit: int = 100, order_by=None
+    ) -> Sequence[Base]:
+        """get MANY models from database this condition.
         :param condition: example (User.user_id == <user_id>)
         :param limit: (Optional, default = 100) Limit count of result.
         :param order_by: (Optional, default = None) Order by column.
@@ -52,7 +54,7 @@ class Repository(Generic[AbstractModel]):
 
     @abc.abstractmethod
     async def new(self, *args, **kwargs) -> None:
-        """ Add new row of model to the database
+        """Add new row of model to the database
         :param args:
         :param kwargs:
         :return:

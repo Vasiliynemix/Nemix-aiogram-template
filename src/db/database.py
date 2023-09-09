@@ -12,9 +12,9 @@ def create_async_engine(url: URL | str) -> AsyncEngine:
 
 class Database:
     def __init__(
-            self,
-            session: AsyncSession,
-            user: UserRepo = None,
+        self,
+        session: AsyncSession,
+        user: UserRepo = None,
     ):
         self.session = session
         self.user = user or UserRepo(session=session)

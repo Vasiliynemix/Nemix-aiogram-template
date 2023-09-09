@@ -18,7 +18,7 @@ class RegisterFilter(BaseFilter):
             user_name=message.from_user.username,
             first_name=message.from_user.first_name,
             language_code=message.from_user.language_code,
-            role=role
+            role=role,
         )
         await db.session.commit()
         return True

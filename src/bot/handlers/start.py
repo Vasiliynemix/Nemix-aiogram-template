@@ -10,27 +10,25 @@ router = Router()
 
 @router.message(CommandStart(), RegisterFilter())
 async def start_handler(message: types.Message):
-    return await message.answer(
-        'Hi, telegram! Авторизируйся!'
-    )
+    return await message.answer("Hi, telegram! Авторизируйся!")
 
 
 @router.message(CommandStart(), AdminFilter())
 async def start_handler(message: types.Message):
     return await message.answer(
-        f'Hi, telegram! {message.from_user.id}, Вы являетесь админом этого бота!'
+        f"Hi, telegram! {message.from_user.id}, Вы являетесь админом этого бота!"
     )
 
 
 @router.message(CommandStart(), ModeratorFilter())
 async def start_handler(message: types.Message):
     return await message.answer(
-        f'Hi, telegram! {message.from_user.id}, Вы являетесь модератором'
+        f"Hi, telegram! {message.from_user.id}, Вы являетесь модератором"
     )
 
 
 @router.message(CommandStart())
 async def start_handler(message: types.Message):
     return await message.answer(
-        f'Hi, telegram! {message.from_user.id}, Вы обычный пользователь'
+        f"Hi, telegram! {message.from_user.id}, Вы обычный пользователь"
     )

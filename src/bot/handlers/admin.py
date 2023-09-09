@@ -8,16 +8,19 @@ from src.db.database import Database
 router = Router()
 
 
-@router.message(Command(commands=['moderators']), AdminFilter())
-async def help_handler(message: Message, db: Database):
+@router.message(Command(commands=["moderators"]), AdminFilter())
+async def help_handler(
+    message: Message,
+    db: Database,
+):
     moderators = await db.user.get_by_role()
-    message_answer = ''
+    message_answer = ""
     for user in moderators:
-        message_answer += f'{user.user_id}\n'
+        message_answer += f"{user.user_id}\n"
     await message.answer(message_answer)
 
 
-@router.message(Command(commands=['admin']), AdminFilter())
+@router.message(Command(commands=["admin"]), AdminFilter())
 async def help_handler(message: Message, db: Database):
     await db.user.update_role(user_id=message.from_user.id)
-    await message.answer('qwerty')
+    await message.answer("qwerty")
